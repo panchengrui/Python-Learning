@@ -1,0 +1,16 @@
+import re
+file = open("G:\software\PyCharmWorkSpace\DailyPractice\罗密欧与朱丽叶%28英文版%29莎士比亚.txt",'r');
+t = file.read()
+text = re.findall(r'\w+',t);          #\w	匹配包括下划线的任何单词字符。等价于'[A-Za-z0-9_]'。  findall（）在字符串中找到正则表达式所匹配的所有子串，并返回一个列表，如果没有找到匹配的，则返回空列表。
+dic = {};
+print(text)
+for i in text:
+    temp = i.lower();
+    if temp == 's':
+        temp = 'is';
+    if dic.get(temp,0) == 0 :
+        dic[temp] = 1;
+    else:
+        dic[temp] =  dic[temp] + 1;
+for key in dic.keys():
+    print("%s : %d \n"%(key,dic[key]))
